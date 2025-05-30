@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhtkctdb674w1"]
+
+[ext_resource type="Script" uid="uid://b56cd775xksvd" path="res://draggable.gd" id="1_law6f"]
+[ext_resource type="Texture2D" uid="uid://bcmi8nxdmbqp0" path="res://icon.svg" id="2_u6fe1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(127, 128)
+
+[node name="Draggable" type="Node2D"]
+script = ExtResource("1_law6f")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="AreaHitbox" type="CollisionShape2D" parent="Area"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_fc0e3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_u6fe1")
+
+[node name="PlacementPreview" type="Sprite2D" parent="Sprite"]
+modulate = Color(1, 1, 1, 0.294118)
+show_behind_parent = true
+top_level = true
+
+[connection signal="mouse_entered" from="Area" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area" to="." method="_on_area_2d_mouse_exited"]
